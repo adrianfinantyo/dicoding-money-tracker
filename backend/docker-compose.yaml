@@ -9,5 +9,6 @@ services:
       - GCLOUD_PROJECT_ID=
       - GCLOUD_STORAGE_BUCKET=
       - DB_HOST=
+      - DB_USER=
       - DB_NAME=
       - DB_PASSWORD=
