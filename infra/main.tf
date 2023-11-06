@@ -25,3 +25,12 @@ module "vm_instance" {
     region = var.region
     zone = var.zone
 }
+
+module "cloud_sql" {
+    source = "./modules/cloud-sql"
+    cloud_sql_db_name = "money-tracker-db"
+    cloud_sql_db_user = "money-tracker-admin"
+    cloud_sql_db_password = "moneytrackeradminpassword"
+    cloud_sql_db_instance_name = "money-tracker-db-instance"
+    cloud_sql_db_instance_region = var.region
+}
