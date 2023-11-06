@@ -6,8 +6,8 @@ services:
       - "8080:8080"
     environment:
       - PORT=8080
-      - GCLOUD_PROJECT=
-      - GCLOUD_BUCKET=
+      - GCLOUD_PROJECT_ID=
+      - GCLOUD_STORAGE_BUCKET=
       - DB_HOST=
       - DB_NAME=
       - DB_PASSWORD=
