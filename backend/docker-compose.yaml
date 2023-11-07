@@ -3,9 +3,9 @@ services:
   backend:
     build: .
     ports:
-      - "8080:8080"
+      - "80:80"
     environment:
-      - PORT=8080
+      - PORT=80
       - GCLOUD_PROJECT_ID=
       - GCLOUD_STORAGE_BUCKET=
       - DB_HOST=

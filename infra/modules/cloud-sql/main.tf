@@ -5,7 +5,13 @@ resource "google_sql_database_instance" "main" {
     deletion_protection = false
 
     settings {
-    tier = "db-f1-micro"
+        tier = "db-f1-micro"
+        ip_configuration {
+          authorized_networks {
+            name = "default"
+            value = "0.0.0.0/0"
+          }
+        }
     }
 }
 
