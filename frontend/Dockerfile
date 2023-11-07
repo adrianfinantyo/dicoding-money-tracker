@@ -1,29 +1,14 @@
-FROM php:7.4-apache
+FROM bitnami/php-fpm:7.4-prod
 
-WORKDIR /var/www/html
-
-COPY . /var/www/html
+COPY . /app
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-RUN a2enmod rewrite
-
-RUN apt-get update && apt-get install -y \
-    libmcrypt-dev \
-    zlib1g-dev \
-    libzip-dev \
-    && docker-php-ext-install zip
-
-# Install Composer
+# Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Run Composer to install dependencies in the project directory
-RUN composer update
+# Install dependencies
+RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader --no-suggest
 
-RUN composer install
-
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-
-EXPOSE 80
-
-CMD ["apache2-foreground"]
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
